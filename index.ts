@@ -9,7 +9,7 @@
 // console.log(sum);
 
 // interface User {
-    
+
 // }
 
 interface Palindrome {
@@ -18,13 +18,13 @@ interface Palindrome {
     time: string
 }
 const btn = document.getElementById('checkBtn') as HTMLButtonElement | null
-btn?.addEventListener('click', ()=>{
+btn?.addEventListener('click', () => {
     const inpPali = document.getElementById('pali') as HTMLInputElement | null
-    
+
     if (inpPali?.value == '') {
         alert("Input cannot be empty")
     } else {
-        let paliObj:Palindrome = {
+        let paliObj: Palindrome = {
             inp: inpPali?.value,
             date: new Date().toLocaleDateString(),
             time: new Date().toLocaleTimeString()
@@ -32,11 +32,13 @@ btn?.addEventListener('click', ()=>{
         const { inp } = paliObj
         console.log(inp);
         const check = inp?.split('').reverse().join('')
+        const divShow = document.getElementById('show') as HTMLElement
         if (inp == check) {
-            const divShow = document.getElementById('show') as HTMLElement
             divShow.innerHTML = `<p class="alert alert-success text-center p-1">${inp} is a palindrome</p>`
+        } else {
+            divShow.innerHTML = `<p class="alert alert-danger text-center p-1">${inp} is not a palindrome</p>`
         }
-        
+
         // console.log(paliObj);
     }
 })
