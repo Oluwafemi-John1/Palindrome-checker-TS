@@ -15,8 +15,11 @@
 interface Palindrome {
     inp: string | undefined,
     date: string,
-    time: string
+    time: string,
 }
+
+let arrPali: Palindrome[] = []
+
 const btn = document.getElementById('checkBtn') as HTMLButtonElement | null
 btn?.addEventListener('click', () => {
     const inpPali = document.getElementById('pali') as HTMLInputElement | null
@@ -27,20 +30,26 @@ btn?.addEventListener('click', () => {
         let paliObj: Palindrome = {
             inp: inpPali?.value,
             date: new Date().toLocaleDateString(),
-            time: new Date().toLocaleTimeString()
+            time: new Date().toLocaleTimeString(),
         }
-        const { inp } = paliObj
+        let { inp } = paliObj
         console.log(inp);
         const changeLower = inp?.toLowerCase()
         console.log(changeLower);
         const check = changeLower?.split('').reverse().join('')
         const divShow = document.getElementById('show') as HTMLElement
-        if (changeLower == check) {
-            divShow.innerHTML = `<p class="alert alert-success text-center p-1">${inp} is a palindrome</p>`
-        } else {
-            divShow.innerHTML = `<p class="alert alert-danger text-center p-1">${inp} is not a palindrome</p>`
-        }
 
-        // console.log(paliObj);
+        console.log(arrPali);
+        if (changeLower == check) {
+            divShow.innerHTML = `
+                <p class="alert alert-success text-center p-1">${inp} is a palindrome</p>
+                <small>${paliObj.date}, ${paliObj.time}</small>
+                `
+        } else {
+            divShow.innerHTML = `
+                <p class="alert alert-danger text-center p-1">${inp} is not a palindrome</p>
+                <small>${paliObj.date}, ${paliObj.time}</small>
+                `
+        }
     }
 })
