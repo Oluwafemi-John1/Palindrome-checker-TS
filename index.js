@@ -14,7 +14,8 @@ btn === null || btn === void 0 ? void 0 : btn.addEventListener('click', function
         };
         var inp = paliObj.inp;
         console.log(inp);
-        var check = inp === null || inp === void 0 ? void 0 : inp.split('').reverse().join('');
+        var changeLower = inp === null || inp === void 0 ? void 0 : inp.toLowerCase();
+        var check = changeLower === null || changeLower === void 0 ? void 0 : changeLower.split('').reverse().join('');
         var divShow = document.getElementById('show');
         if (inp == check) {
             divShow.innerHTML = "<p class=\"alert alert-success text-center p-1\">".concat(inp, " is a palindrome</p>");
